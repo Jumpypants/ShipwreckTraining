@@ -1,4 +1,4 @@
-package Subsystems;
+package org.firstinspires.ftc.teamcode.subSystems;
 
 import com.jumpypants.murphy.RobotContext;
 import com.jumpypants.murphy.tasks.Task;
@@ -8,14 +8,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.MyRobot;
 
 
-public class Wrist {
+public class Intake {
     private final Servo rotatingWristServo;
     private final Servo verticalWristServo;
     public static final double ROTATING_CLOSE_POSITION = 0.7;
     public static final double WRIST_UP_POSITION = 0.1;
     public static final double WRIST_DOWN_POSITION = 1.0;
 
-    public Wrist(HardwareMap hardwareMap) {
+    public Intake(HardwareMap hardwareMap) {
 
         verticalWristServo = hardwareMap.get(Servo.class, "verticalWristServo");
         rotatingWristServo = hardwareMap.get(Servo.class, "rotatinglWristServo");
