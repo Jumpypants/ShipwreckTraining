@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.MyRobot;
+
 //import org.firstinspires.ftc.teamcode.MyRobot;
 
 public class Wrist {
@@ -25,13 +27,11 @@ public class Wrist {
     }
 
     public class RunIntakeTask extends Task {
-        private final MyRobot robot;
         private boolean previousButtonState = false;
         private boolean isServoOn = false;
 
-        public RunIntakeTask(MyRobot robot) {
-            super(robot);
-            this.robot = robot;
+        public RunIntakeTask(MyRobot robotContext) {
+            super(robotContext);
         }
 
         @Override
@@ -42,7 +42,7 @@ public class Wrist {
 
         @Override
         protected boolean run(RobotContext robotContext) {
-            Gamepad gamepad1 = robot.gamepad1;
+            Gamepad gamepad1 = robotContext.gamepad1;
 
             boolean currentButtonState = gamepad1.x;
 
@@ -67,13 +67,11 @@ public class Wrist {
     //each task returns a boolean (if false, runs task again and if true, moves on to next)
 
     public class ReleaseSampleTask extends Task {
-        private final MyRobot robot;
         private boolean previousButtonState = false;
         private boolean isServoOn = false;
 
-        public RunIntakeTask(MyRobot robot) {
-            super(robot);
-            this.robot = robot;
+        public ReleaseSampleTask(MyRobot robotContext) {
+            super(robotContext);
         }
 
         @Override
@@ -84,7 +82,7 @@ public class Wrist {
 
         @Override
         protected boolean run(RobotContext robotContext) {
-            Gamepad gamepad1 = robot.gamepad1;
+            Gamepad gamepad1 = robotContext.gamepad1;
 
             boolean currentButtonState = gamepad1.x;
 
