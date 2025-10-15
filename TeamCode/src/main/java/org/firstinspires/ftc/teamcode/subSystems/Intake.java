@@ -10,14 +10,16 @@ import org.firstinspires.ftc.teamcode.MyRobot;
 
 public class Intake {
     private final Servo rotatingWristServo;
-    private final Servo verticalWristServo;
+    private final Servo verticalWristServo1;
+    private final Servo verticalWristServo2;
     public static final double ROTATING_CLOSE_POSITION = 0.7;
     public static final double WRIST_UP_POSITION = 0.1;
     public static final double WRIST_DOWN_POSITION = 1.0;
 
     public Intake(HardwareMap hardwareMap) {
 
-        verticalWristServo = hardwareMap.get(Servo.class, "verticalWristServo");
+        verticalWristServo1 = hardwareMap.get(Servo.class, "verticalWristServoUp");
+        verticalWristServo2 = hardwareMap.get(Servo.class, "verticalWristServoDown");
         rotatingWristServo = hardwareMap.get(Servo.class, "rotatinglWristServo");
     }
 
@@ -25,27 +27,25 @@ public class Intake {
 
     public class MoveWristTask extends Task {
         private final double rotatingPos;
-        private final double verticalPos;
-        public MoveWristTask(RobotContext robotContext, double rotatingPos, double verticalPos) {
+        public MoveWristTask(RobotContext robotContext, double rotatingPos) {
             super(robotContext);
             this.rotatingPos = rotatingPos;
-            this.verticalPos = verticalPos;
         }
 
         @Override
         protected void initialize(RobotContext robotContext) {
-            verticalWristServo.setPosition(verticalPos);
+            verticalWristServo1.setDirection(Servo.Direction.FORWARD);
+            verticalWristServo2.setDirection(Servo.Direction.REVERSE);
             rotatingWristServo.setPosition(rotatingPos);
         }
 
         @Override
         protected boolean run(RobotContext robotContext) {
             double currentPositionRotating = rotatingWristServo.getPosition();
-            double currentPositionVertical = verticalWristServo.getPosition();
+            double currentPositionVertical = verticalWristServo1.getPosition();
             double rotatingDifference = Math.abs(rotatingPos - currentPositionRotating);
-            double verticalDifference = Math.abs(verticalPos - currentPositionVertical);
 
-            return rotatingDifference < 5 && verticalDifference < 5;
+            return rotatingDifference < 5;
         }
     }
 }
