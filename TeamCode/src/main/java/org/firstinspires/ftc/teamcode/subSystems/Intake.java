@@ -27,9 +27,13 @@ public class Intake {
 
     public class MoveWristTask extends Task {
         private final double rotatingPos;
+        private final double estimatedTimeTaken;
         public MoveWristTask(RobotContext robotContext, double rotatingPos) {
             super(robotContext);
             this.rotatingPos = rotatingPos;
+            double currentPosition = rotatingWristServo.getPosition();
+            double TIME_COEFFICIENT = 0.5;
+            estimatedTimeTaken = Math.abs(rotatingPos - currentPosition) * TIME_COEFFICIENT;
         }
 
         @Override
@@ -41,11 +45,7 @@ public class Intake {
 
         @Override
         protected boolean run(RobotContext robotContext) {
-            double currentPositionRotating = rotatingWristServo.getPosition();
-            double currentPositionVertical = verticalWristServo1.getPosition();
-            double rotatingDifference = Math.abs(rotatingPos - currentPositionRotating);
-
-            return rotatingDifference < 5;
+            return ELAPSED_TIME.seconds() < estimatedTimeTaken;
         }
     }
 }
