@@ -5,10 +5,8 @@ import com.jumpypants.murphy.tasks.Task;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.MyRobot;
 
-
-public class Intake {
+public class Wrist {
     private final Servo rotatingWristServo;
     private final Servo verticalWristServo1;
     private final Servo verticalWristServo2;
@@ -16,7 +14,7 @@ public class Intake {
     public static final double WRIST_UP_POSITION = 0.1;
     public static final double WRIST_DOWN_POSITION = 1.0;
 
-    public Intake(HardwareMap hardwareMap) {
+    public Wrist(HardwareMap hardwareMap) {
 
         verticalWristServo1 = hardwareMap.get(Servo.class, "verticalWristServoUp");
         verticalWristServo2 = hardwareMap.get(Servo.class, "verticalWristServoDown");

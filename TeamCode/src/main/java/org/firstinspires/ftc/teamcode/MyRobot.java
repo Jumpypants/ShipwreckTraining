@@ -5,7 +5,7 @@ import com.jumpypants.murphy.RobotContext;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.subSystems.Intake;
+import org.firstinspires.ftc.teamcode.subSystems.Wrist;
 import org.firstinspires.ftc.teamcode.subSystems.Xarm;
 
 
@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.subSystems.Xarm;
 public class MyRobot extends RobotContext {
     public final MecanumDrive DRIVE;
     public final Xarm XARM;
-    public final Intake WRIST;
+    public final Wrist WRIST;
     public final Bucket BUCKET;
 
     //not sure about the following
@@ -30,12 +30,12 @@ public class MyRobot extends RobotContext {
      * @param gamepad1  the primary gamepad controller
      * @param gamepad2  the secondary gamepad controller
      */
-    public MyRobot(Telemetry telemetry, Gamepad gamepad1, Gamepad gamepad2, MecanumDrive drive, Xarm xarm, Intake wrist, Bucket bucket, Intake wrist1, Bucket bucket1) {
+    public MyRobot(Telemetry telemetry, Gamepad gamepad1, Gamepad gamepad2, MecanumDrive drive, Xarm xarm, Wrist wrist, Bucket bucket) {
         super(telemetry, gamepad1, gamepad2);
         this.DRIVE = drive;
         this.XARM = xarm;
-        this.WRIST = wrist1;
-        this.BUCKET = bucket1;
+        this.WRIST = wrist;
+        this.BUCKET = bucket;
 
         //not sure about the following
         this.gamepad1 = gamepad1;
